@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * main - endless prompt
+ *
+ * Return: number of characters
+*/
 int main()
 {
     char *buffer;
