@@ -1,21 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - print all args
+ * main - Prints all arguments using only av
+ * @ac: argument count (unused)
+ * @av: argument vector
  *
- * @ac: number of args
- * @av: array of args
- *
- * Return: Always 0.
-*/
+ * Return: Always 0
+ */
 int main(int ac, char **av)
 {
-	int i = 0;
-
-	for(i = 0; i < ac; i++)
-	{
-		(void) ac;
-		printf("%s\n", av[i]);
-	}
-	return (0);
+while (*av != NULL)
+{
+printf("%s\n", *av);
+av++;
+}
+return (0);
 }
