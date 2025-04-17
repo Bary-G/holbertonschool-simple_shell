@@ -9,9 +9,9 @@
  */
 int main(void)
 {
-pid_t my_ppid;
-my_ppid = getppid();
-printf("%d\n", my_ppid);
+pid_t ppid;
+ppid = getppid();
+printf("%d\n", ppid);
 return (0);
 }
 
