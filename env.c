@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 /**
- * main - prints the environment using the global variable 'environ'
+ * main - prints adress of environment using the global variable 'environ'
  *
  * Return: Always 0.
  */
@@ -10,6 +10,7 @@ int main(void)
 {
 	extern char **environ;
 	int i = 0;
+	
 	while (environ[i] != NULL)
 	{
 		printf("%s\n", environ[i]);
@@ -18,4 +19,3 @@ int main(void)
 
 	return (0);
 }
-
