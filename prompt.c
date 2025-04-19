@@ -4,14 +4,14 @@
 /**
  * main - endless prompt
  *
- * Return: number of characters
-*/
+ * Return: Always 0.
+ */
 int main(void)
 {
 char *buffer;
-size_t bufsize = 32;
-size_t read;
-buffer = (char *)malloc(bufsize * sizeof(char));
+size_t bufsize = 1024;
+ssize_t read;
+buffer = malloc(bufsize * sizeof(char));
 if (buffer == NULL)
 {
 perror("Unable to allocate buffer");
@@ -31,3 +31,4 @@ printf("%s", buffer);
 free(buffer);
 return (0);
 }
+
