@@ -1,5 +1,5 @@
-#ifndef PATH_LIST_H
-#define PATH_LIST_H
+#ifndef SHELL_H
+#define SHELL_H
 
 /**
  * struct path_node - singly linked list for PATH directories
