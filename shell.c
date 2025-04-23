@@ -5,6 +5,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 #define PROMPT "#cisfun$ "
 #define BUFFER_SIZE 1024
 
