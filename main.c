@@ -3,7 +3,7 @@
 #include <string.h>
 
 // Include the function and structure declaration
-#include "path_list.h" // This should contain the path_node struct and function prototype
+#include "shell.h" // This should contain the path_node struct and function prototype
 
 int main(void)
 {

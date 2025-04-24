@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "path_list.h" /* Or however your struct is declared */
+#include "shell.h" /* Or however your struct is declared */
 
 /**
  * free_path_list - frees a linked list of paths

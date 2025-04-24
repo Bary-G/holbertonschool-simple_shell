@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "path_list.h"
+#include "shell.h"
 
 /**
  * print_path_list - prints each directory in the list

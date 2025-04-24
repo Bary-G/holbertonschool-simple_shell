@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "path_list.h"
+#include "shell.h"
 
 void print_path_list(path_node *head)
 {
