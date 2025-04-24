@@ -32,7 +32,7 @@ free_path_list(head);
 return (NULL);
 }
 
-node->path = strdup(token);
+node->dir = strdup(token);
 node->next = NULL;
 
 if (!head)
@@ -56,7 +56,7 @@ void print_path_list(path_node *head)
 {
 while (head != NULL)
 {
-printf("%s\n", head->path);
+printf("%s\n", head->dir);
 head = head->next;
 }
 }
@@ -73,7 +73,7 @@ while (head != NULL)
 {
 temp = head;
 head = head->next;
-free(temp->path);
+free(temp->dir);
 free(temp);
 }
 }

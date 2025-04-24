@@ -30,7 +30,7 @@ break;
 }
 line[strcspn(line, "\n")] = '\0';
 
-// Fork and exec
+/* Fork and exec */
 pid = fork();
 if (pid == -1)
 {
@@ -38,7 +38,9 @@ perror("fork");
 }
 else if (pid == 0)
 {
-char *argv[] = {line, NULL};
+char *argv[2];
+argv[0] = line;
+argv[1] = NULL;
 if (execve(line, argv, environ) == -1)
 {
 perror("execve");

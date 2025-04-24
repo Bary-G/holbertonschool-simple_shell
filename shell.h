@@ -35,14 +35,14 @@ char **tokenize_env(char *path);
 int _strcmp(char *s1, char *s2);
 void sigint_handler(int sig);
 int _putchar(char c);
-char *_getenv(char *var);
 void _printenv(void);
 int _strlen(char *s);
 int _strncmp(char *str1, char *str2, int n);
-path_node *build_path_list(void);
 void print_path_list(path_node *head);
 void free_path_list(path_node *head);
 path_node *build_path_list(const char *path_value);
+char *_getenv(const char *name);
+int _setenv(const char *name, const char *value, int overwrite);
 
 #endif
 
