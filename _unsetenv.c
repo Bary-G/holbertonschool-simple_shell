@@ -22,14 +22,11 @@ if (strncmp(environ[i], name, name_len) == 0 && environ[i][name_len] == '=')
 {
 free(environ[i]);
 
-/* Shift the rest of the array back */
 for (j = i; environ[j]; j++)
 environ[j] = environ[j + 1];
 return (0);
 }
 }
-
-/* Not found, no error */
 return (0);
 }
 

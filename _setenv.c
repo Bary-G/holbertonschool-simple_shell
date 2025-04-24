@@ -19,11 +19,10 @@ size_t name_len, i;
 if (!name || !value || strchr(name, '='))
 return (-1);
 name_len = strlen(name);
-env_str = malloc(name_len + strlen(value) + 2); /* +1 for '=', +1 for '\0' */
+env_str = malloc(name_len + strlen(value) + 2);
 if (!env_str)
 return (-1);
 
-/* Construct new environment string */
 sprintf(env_str, "%s=%s", name, value);
 for (i = 0; environ[i]; i++)
 {
@@ -40,12 +39,16 @@ return (0);
 }
 }
 
-/* Add new variable */
 environ[i] = env_str;
 environ[i + 1] = NULL;
 return (0);
 }
 
+/**
+ * main - Entry point. Tests _setenv.
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
 char *value;
