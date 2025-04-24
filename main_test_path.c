@@ -1,6 +1,10 @@
 #include <stdio.h>
-#include "path_list.h"
+#include "shell.h"
 
+/**
+ * print_path_list - Prints each path from a linked list.
+ * @head: Pointer to the head of the path_node linked list.
+ */
 void print_path_list(path_node *head)
 {
 while (head != NULL)
@@ -8,12 +12,13 @@ while (head != NULL)
 printf("%s\n", head->path);
 head = head->next;
 }
+}
 
 /**
-* main - test _getenv function
-*
-* Return: Always 0.
-*/
+ * main - Test _getenv function.
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
 char *value;
