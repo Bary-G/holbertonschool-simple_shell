@@ -10,30 +10,30 @@
  */
 int main(void)
 {
-	pid_t pid;
-	int i;
-	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
-	for (i = 0; i < 5; i++)
-	{
-	pid = fork();
-	if (pid == -1)
+pid_t pid;
+int i;
+char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
+for (i = 0; i < 5; i++)
 {
-	perror("fork");
-	return (1);
-	}
-	if (pid == 0)
+pid = fork();
+if (pid == -1)
 {
-	if (execve(argv[0], argv, NULL) == -1)
-	{
-	perror("execve");
+perror("fork");
+return (1);
 }
-	return (1);
-	}
-	else
+if (pid == 0)
 {
-	wait(NULL);
-	}
+if (execve(argv[0], argv, NULL) == -1)
+{
+perror("execve");
 }
- 	return (0);
-	}
+return (1);
+}
+else
+{
+wait(NULL);
+}
+}
+return (0);
+}
 
