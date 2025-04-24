@@ -10,7 +10,9 @@ Un mini shell en C capable d'exécuter des commandes comme `ls`, `cd`, `exit`, e
 ## Compilation :
 ```bash
 make
+```
 
+## Flowchart
 ```mermaid
 flowchart TD
     1((Démarrage du shell.c)) --> 2[Affiche #cisfun$]
@@ -23,3 +25,4 @@ flowchart TD
     5B --> 5C{Commande repertoriee ?}
     5C -->|Oui| 6A[Executer la commande repertoriee] -->|Boucle infinie| 2
     5C -->|Non| 6B[Erreur execve] -->|Boucle infinie| 2
+```
