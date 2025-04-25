@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "shell.h"
 
 #define PROMPT "#cisfun$ "
 #define BUFFER_SIZE 1024
@@ -24,13 +25,9 @@ int main(void)
 		printf(PROMPT);
 		if (getline(&line, &len, stdin) == -1)
 		{
-			
 			break;
 		}
-
 			line[strcspn(line, "\n")] = '\0';
-
-			/* Fork and exec */
 			pid = fork();
 
 			if (pid == -1)
@@ -40,6 +37,7 @@ int main(void)
 			else if (pid == 0)
 		{
 			char *argv[2];
+
 			argv[0] = line;
 			argv[1] = NULL;
 			if (execve(line, argv, environ) == -1)
@@ -56,38 +54,3 @@ int main(void)
 	free(line);
 	return (0);
 }
-
-/**
- * main - Simple shell loop
- *
- * Return: Always 0
- */
-int main(void)
-{
-		char *line = NULL;
-		size_t len = 0;
-
-		while (1)
-	{
-		printf(PROMPT);
-		if (getline(&line, &len, stdin) == -1)
-		{
-			printf("\n");
-			break;
-		}
-
-		line[strcspn(line, "\n")] = '\0';
-
-		if (line[0] == '\0')
-			continue;
-
-		if (strcmp(line, "exit") == 0)
-			break;
-
-		execute_command(line);
-	}
-
-	free(line);
-	return (0);
-}
-
