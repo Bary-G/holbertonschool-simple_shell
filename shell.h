@@ -32,17 +32,20 @@ int execute(char **args);
 char *get_path(char *command);
 char *_strcat(char *dest, char *src);
 char **tokenize_env(char *path);
-int _strcmp(char *s1, char *s2);
 void sigint_handler(int sig);
 int _putchar(char c);
 void _printenv(void);
-int _strlen(char *s);
 int _strncmp(char *str1, char *str2, int n);
 void print_path_list(path_node *head);
 void free_path_list(path_node *head);
 path_node *build_path_list(const char *path_value);
 char *_getenv(const char *name);
 int _setenv(const char *name, const char *value, int overwrite);
+char *_strchr(const char *s, int c);
+int _strcmp(const char *s1, const char *s2);
+size_t _strcspn(const char *s1, const char *s2);
+char *_strdup(const char *s);
+size_t _strlen(const char *s);
 
 #endif
 
