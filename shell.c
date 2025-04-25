@@ -26,7 +26,7 @@ int main(void)
 		printf(PROMPT);
 		if (getline(&line, &len, stdin) == -1)
 		{
-			perror("getline");
+			
 			break;
 		}
 
