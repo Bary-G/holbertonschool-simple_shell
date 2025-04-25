@@ -5,8 +5,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-extern char **environ;
-
 #define PROMPT "#cisfun$ "
 #define BUFFER_SIZE 1024
 
@@ -30,31 +28,65 @@ int main(void)
 			break;
 		}
 
-		line[strcspn(line, "\n")] = '\0';
+			line[strcspn(line, "\n")] = '\0';
 
-		/* Fork and exec */
-		pid = fork();
+			/* Fork and exec */
+			pid = fork();
 
-		if (pid == -1)
+			if (pid == -1)
 		{
 			perror("fork");
 		}
-		else if (pid == 0)
+			else if (pid == 0)
 		{
 			char *argv[2];
 			argv[0] = line;
 			argv[1] = NULL;
 			if (execve(line, argv, environ) == -1)
-			{
-				perror("execve");
-				exit(EXIT_FAILURE);
-			}
+		{
+			perror("execve");
+			exit(EXIT_FAILURE);
 		}
-		else
+		}
+			else
 		{
 			wait(&status);
 		}
 	}
+	free(line);
+	return (0);
+}
+
+/**
+ * main - Simple shell loop
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+		char *line = NULL;
+		size_t len = 0;
+
+		while (1)
+	{
+		printf(PROMPT);
+		if (getline(&line, &len, stdin) == -1)
+		{
+			printf("\n");
+			break;
+		}
+
+		line[strcspn(line, "\n")] = '\0';
+
+		if (line[0] == '\0')
+			continue;
+
+		if (strcmp(line, "exit") == 0)
+			break;
+
+		execute_command(line);
+	}
+
 	free(line);
 	return (0);
 }
