@@ -23,6 +23,7 @@ int main(void)
 	while (1)
 	{
 		printf(PROMPT);
+		fflush(stdout);
 		if (getline(&line, &len, stdin) == -1)
 		{
 			break;
