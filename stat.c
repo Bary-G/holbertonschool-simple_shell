@@ -4,9 +4,11 @@
 #include <unistd.h>
 
 /**
- * main - stat example
+ * main - Checks if each provided file path exists using stat
+ * @ac: Argument count
+ * @av: Argument vector (array of file paths)
  *
- * Return: Always 0.
+ * Return: 0 on success, 1 if no file paths are provided
  */
 int main(int ac, char **av)
 {
