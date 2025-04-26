@@ -4,54 +4,63 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "shell.h"
 
 #define PROMPT "#cisfun$ "
-#define BUFFER_SIZE 1024
+#define MAX_ARGS 64
 
-/**
- * main - Simple shell loop
- * Return: Always 0
- */
 int main(void)
 {
 	char *line = NULL;
 	size_t len = 0;
+	char *args[MAX_ARGS];
 	pid_t pid;
 	int status;
 
 	while (1)
 	{
-		printf(PROMPT);
-		fflush(stdout);
-		if (getline(&line, &len, stdin) == -1)
-		{
-			break;
-		}
-			line[_strcspn(line, "\n")] = '\0';
-			pid = fork();
+	if (isatty(STDIN_FILENO))
+	printf(PROMPT);
 
-			if (pid == -1)
-		{
-			perror("fork");
-		}
-			else if (pid == 0)
-		{
-			char *argv[2];
+	if (getline(&line, &len, stdin) == -1)
+	break;
 
-			argv[0] = line;
-			argv[1] = NULL;
-			if (execve(line, argv, environ) == -1)
-		{
-			perror("execve");
-			exit(EXIT_FAILURE);
-		}
-		}
-			else
-		{
-			wait(&status);
-		}
+	line[strcspn(line, "\n")] = '\0';
+
+	if (line[0] == '\0')
+	continue;
+
+	if (strcmp(line, "exit") == 0)
+	break;
+	char *token = strtok(line, " \t");
+	int i = 0;
+	while (token != NULL && i < MAX_ARGS - 1)
+{
+	args[i++] = token;
+	token = strtok(NULL, " \t");
 	}
-	free(line);
-	return (0);
+		args[i] = NULL;
+		pid = fork();
+		if (pid == -1)
+	{	
+		perror("fork");
+		continue;
+	}
+		if (pid == 0)
+{
+	if (execvp(args[0], args) == -1)
+{
+	perror("execvp");
+	exit(EXIT_FAILURE);
+	}	
+
 }
+	else
+{
+	wait(&status);
+}
+	}
+
+    free(line);
+    return 0;
+}
+
