@@ -46,6 +46,9 @@ int _strcmp(const char *s1, const char *s2);
 size_t _strcspn(const char *s1, const char *s2);
 char *_strdup(const char *s);
 size_t _strlen(const char *s);
+void display_prompt(void);
+int execute_command(char *line);
+char *find_command(char *cmd);
 
 #endif
 
