@@ -51,6 +51,7 @@ void display_prompt(void);
 int execute_command(char *args[]);
 char *find_command(char *cmd);
 void parse_input(char *line, char *args[]);
+void trim_spaces(char *str);
 
 #endif
 

@@ -5,12 +5,8 @@
 #include "shell.h"
 
 #define PROMPT "#cisfun$ "
+#define MAX_ARGS 64
 
-/**
- * main - Entry point of the shell
- *
- * Return: Always 0
- */
 int main(void)
 {
 	char *line = NULL;
@@ -18,23 +14,28 @@ int main(void)
 	char *args[MAX_ARGS];
 
 	while (1)
+
 	{
-	if (isatty(STDIN_FILENO))
-	printf(PROMPT);
+		if (isatty(STDIN_FILENO))
+			printf(PROMPT);
 
-	if (getline(&line, &len, stdin) == -1)
-		break;
+		if (getline(&line, &len, stdin) == -1)
 
-	line[strcspn(line, "\n")] = '\0';
+		{
+			printf("\n");
+			break;
+		}
 
-	if (line[0] == '\0')
-		continue;
+		line[strcspn(line, "\n")] = '\0';
 
-	if (strcmp(line, "exit") == 0)
-		break;
+		if (line[0] == '\0')
+			continue;
 
-	parse_input(line, args);
-	execute_command(args);
+		if (strcmp(line, "exit") == 0)
+			break;
+
+		parse_input(line, args);
+		execute_command(args);
 	}
 
 	free(line);
