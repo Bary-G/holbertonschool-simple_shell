@@ -7,6 +7,11 @@
 #define PROMPT "#cisfun$ "
 #define MAX_ARGS 64
 
+/**
+ * main - simple shell interpreter
+ * @void: void
+ * Return: 0
+ */
 int main(void)
 {
 	char *line = NULL;
@@ -14,7 +19,6 @@ int main(void)
 	char *args[MAX_ARGS];
 
 	while (1)
-
 	{
 		if (isatty(STDIN_FILENO))
 			printf(PROMPT);
@@ -37,7 +41,6 @@ int main(void)
 		parse_input(line, args);
 		execute_command(args);
 	}
-
 	free(line);
 	return (0);
 }

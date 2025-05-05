@@ -11,10 +11,9 @@ void trim_spaces(char *str)
 	char *end;
 
 	while (isspace((unsigned char)*start))
-        start++;
+		start++;
 
 	if (*start == 0)
-	
 	{
 		*str = 0;
 		return;
@@ -22,11 +21,11 @@ void trim_spaces(char *str)
 
 	end = start + strlen(start) - 1;
 	while (end > start && isspace((unsigned char)*end))
-        end--;
+		end--;
 
 	*(end + 1) = '\0';
 
 	if (start != str)
-        memmove(str, start, end - start + 2);
+		memmove(str, start, end - start + 2);
 }
 
