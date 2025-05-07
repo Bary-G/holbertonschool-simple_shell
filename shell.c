@@ -34,9 +34,6 @@ int main(void)
 		if (line[0] == '\0')
 			continue;
 
-		if (line[0] == ' ')
-			continue;
-
 		if (strcmp(line, "exit") == 0)
 			break;
 

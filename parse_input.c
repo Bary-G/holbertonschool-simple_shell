@@ -19,4 +19,3 @@ void parse_input(char *line, char *args[])
 	}
 	args[i] = NULL;
 }
-
