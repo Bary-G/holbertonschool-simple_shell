@@ -26,7 +26,6 @@ int main(void)
 		if (getline(&line, &len, stdin) == -1)
 
 		{
-			printf("\n");
 			break;
 		}
 
