@@ -23,7 +23,7 @@ int execute_command(char *args[])
 	{
 		if (execve(args[0], args, environ) == -1)
 		{
-			perror("./hsh");
+			perror("./shell");
 			exit(EXIT_FAILURE);
 		}
 	}
